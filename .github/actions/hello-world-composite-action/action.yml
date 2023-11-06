@@ -23,3 +23,5 @@ runs:
       shell: bash
     - run: goodbye.sh
       shell: bash
+    - run: git describe --tags --always --first-parent
+      shell: bash
