@@ -1,0 +1,20 @@
+name: "jcasc-core-tag"
+description: |
+  Figures out the docker tag to use for the jcasc-core image.
+  If the build is NOT on a feature branch and the Jenkins version was updated, then it can also create a git tag for you if create_git_tag=true. See inputs.
+  Feature branches are defined as branches with a '/' in the name.
+outputs:
+  tag_name:
+    description: "The generated name for the docker tag to be set. If a git tag was needed was also created if create_git_tag was set to true."
+    value: ${{ steps.determine-tag-name.outputs.tag_name }}
+inputs:
+  create_git_tag:
+    description: 'When true, the action will create a git tag, but only if it is needed'
+    required: true
+    default: 'false'
+runs:
+  using: "composite"
+  steps:
+    - id: determine-tag-name
+      run: echo "tag_name=$(action.sh ${{ inputs.create_git_tag }})" >> $GITHUB_OUTPUT
+      shell: bash

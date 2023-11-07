@@ -12,3 +12,10 @@ jobs:
           who-to-greet: 'Mona the Octocat'
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
+      - name: Figure out docker tag
+        id: generate_docker_tag
+        uses: ./.github/actions/jcasc-core-tag
+        with:
+          create_git_tag: "false"
+      - run: echo Docker tag is ${{ steps.generate_docker_tag.outputs.tag_name }} 
+        shell: bash
