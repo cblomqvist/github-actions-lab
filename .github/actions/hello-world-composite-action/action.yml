@@ -25,3 +25,10 @@ runs:
       shell: bash
     - run: git describe --tags --always --first-parent
       shell: bash
+    - id: debug-info
+      run: |
+        echo "Current branch:"
+        git branch --show-current
+        echo "Latest commit:"
+        git log -1
+      shell: bash

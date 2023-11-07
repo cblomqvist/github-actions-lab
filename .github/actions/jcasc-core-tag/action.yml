@@ -15,6 +15,13 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - id: debug-info
+      run: |
+        echo "Current branch:"
+        git branch --show-current
+        echo "Latest commit:"
+        git log -1
+      shell: bash
     - id: determine-tag-name
       run: echo "tag_name=$(${{ github.action_path }}/action.sh ${{ inputs.create_git_tag }})" >> $GITHUB_OUTPUT
       shell: bash
