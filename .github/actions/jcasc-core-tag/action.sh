@@ -3,8 +3,7 @@
 #   https://docs.github.com/en/actions/learn-github-actions/variables#default-environment-variables
 # - GITHUB_REF_NAME is the branch name
 # - GITHUB_SHA is the full sha, so it's a bit too long
-
-#!/bin/bash
+set -x
 
 # Should we make a git tag or not?
 create_git_tag=${1:-"false"}
