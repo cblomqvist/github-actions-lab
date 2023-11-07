@@ -16,5 +16,5 @@ runs:
   using: "composite"
   steps:
     - id: determine-tag-name
-      run: echo "tag_name=$(action.sh ${{ inputs.create_git_tag }})" >> $GITHUB_OUTPUT
+      run: echo "tag_name=$(${{ github.action_path }}/action.sh ${{ inputs.create_git_tag }})" >> $GITHUB_OUTPUT
       shell: bash
