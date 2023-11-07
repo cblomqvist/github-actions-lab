@@ -23,6 +23,10 @@ runs:
         git log -1
         echo STATUS
         git status
+        echo GRAPH 1
+        git log --abbrev --decorate --oneline --graph | head -1
+        echo GRAPH full
+        git log --abbrev --decorate --oneline --graph
       shell: bash
     - id: determine-tag-name
       run: echo "tag_name=$(${{ github.action_path }}/action.sh ${{ inputs.create_git_tag }})" >> $GITHUB_OUTPUT

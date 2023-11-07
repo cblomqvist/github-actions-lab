@@ -31,4 +31,10 @@ runs:
         git branch --show-current
         echo "Latest commit:"
         git log -1
+        echo STATUS
+        git status
+        echo GRAPH 1
+        git log --abbrev --decorate --oneline --graph | head -1
+        echo GRAPH full
+        git log --abbrev --decorate --oneline --graph
       shell: bash
